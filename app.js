@@ -10,7 +10,7 @@ mongoose.Promise = require('bluebird');
 
 var index = require('./routes/index');
 var signup = require('./routes/signup');
-var users = require('./routes/users');
+var users = require('./routes/user');
 
 var config = require('./config');
 
@@ -41,7 +41,7 @@ app.use(express.static(path.join(__dirname, 'images')));
 
 app.use('/', index);
 app.use('/signup', signup);
-app.use('/users', users);
+app.use('/user', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

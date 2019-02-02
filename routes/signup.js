@@ -4,13 +4,12 @@ var User = require('../models/allschema').users
 var mailer = require('../components/mailer')
 
 router.get('/', function (req, res, next) {
-	res.render('signup');
+	res.render('signup', {message : ""});
 });
 
 router.post('/', async function (req, res, next) {
 	try {
 		var user = await User.findOne({email : req.body.email})
-		console.log(user)
 		if(!user){
 			let pw = Math.random().toString(36).substring(7);
 			await Promise.all([mailer.service.sendMail(mailer.opts(req.body.email, pw)), User.create({
@@ -21,7 +20,7 @@ router.post('/', async function (req, res, next) {
 		else{
 			await mailer.service.sendMail(mailer.opts(req.body.email, user.password))
 		}
-		res.render('index', { massage : `${req.body.email} is successfully registered`})
+		res.render('index', { message : `${req.body.email} is successfully registered`})
 	}
 	catch(e){
 		console.log(e)
