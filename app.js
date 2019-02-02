@@ -5,8 +5,22 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
+
 var index = require('./routes/index');
+var signup = require('./routes/signup');
 var users = require('./routes/users');
+
+var config = require('./config');
+
+mongoose.connect(config.db.uri, {useNewUrlParser: true})
+.then(db=>{
+  console.log(config.logs.dbsuccess);
+})
+.catch(err=>{
+  console.log(config.logs.dberr);
+})
 
 var app = express();
 
@@ -21,8 +35,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'images')));
 
 app.use('/', index);
+app.use('/signup', signup);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
