@@ -56,7 +56,7 @@ router.post('/', upload.single('imageFile'), async (req, res, next) => {
         res.render('index', { message: "Successful submission" })
     }
     catch(e){
-        console.log(e)
+        res.render('error')
     }
 })
 
