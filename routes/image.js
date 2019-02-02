@@ -24,6 +24,7 @@ var imageFileFilter = (req, file, cb) => {
 var upload = multer({ storage: storage, fileFilter: imageFileFilter });
 
 router.get('/', (req, res, next) => {
+    console.log("Sdsada");
     res.sendFile(path.join(__dirname, '../public/images/default.PNG'));
 })
 
@@ -37,7 +38,7 @@ router.get('/:id', async (req, res, next) => {
                 res.sendFile(path.join(__dirname, '../public/images', sub.name[sub.name.length-1]));
                 exists = 1;
             }
-            
+
     if(exists == 0) {
         res.sendFile(path.join(__dirname, '../public/images/default.PNG'));
     }
@@ -47,7 +48,7 @@ router.post('/', upload.single('imageFile'), async (req, res, next) => {
     try{
         var sub = await Submission.findOne({userid : req.body.id});
         if(!sub)
-            await Submission.create({userid : require.body.id, name : [req.file.filename]})
+            await Submission.create({userid : req.body.id, name : [req.file.filename]})
         else{
             sub.name.push(req.file.filename)
             await sub.save()
@@ -55,7 +56,7 @@ router.post('/', upload.single('imageFile'), async (req, res, next) => {
         res.render('index', { message: "Successful submission" })
     }
     catch(e){
-
+        console.log(e)
     }
 })
 
