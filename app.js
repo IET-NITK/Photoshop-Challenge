@@ -14,6 +14,8 @@ var users = require('./routes/users');
 
 var config = require('./config');
 
+mongoose.set('useCreateIndex', true)
+
 mongoose.connect(config.db.uri, {useNewUrlParser: true})
 .then(db=>{
   console.log(config.logs.dbsuccess);
