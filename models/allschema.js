@@ -3,11 +3,10 @@ mongoose.Promise = require('bluebird');
 var Schema = mongoose.Schema;
 
 var Submission = new Schema({
-    name : {
-        type : String
-    },
+    name : [String],
     userid : {
-        type : mongoose.Types.ObjectId
+        type : mongoose.Types.ObjectId,
+        unique : true
     }
 }, {
     timestamps : true,

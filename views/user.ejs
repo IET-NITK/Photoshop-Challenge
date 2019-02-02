@@ -11,7 +11,9 @@
     <h2 class="w3-center w3-xxlarge">PHOTOSHOP COMPETITION</h2>
     <p>Rules</P>
     <ul>
-        <li>Problem statement will be a movie plot (storyline), based on which, you will have to design a poster for that movie. You can use any non-copyrighted image you want from the internet. Top 3 posters will be the winners.</li>
+        <li>Problem statement will be a movie plot (storyline), based on which, you will have to design a poster for
+            that movie. You can use any non-copyrighted image you want from the internet. Top 3 posters will be the
+            winners.</li>
         <li>You have to be an NITK student to participate in this event</li>
         <li>Competition is on Sunday 3rd Feb, from 6pm to Monday 4th Feb 2am</li>
         <li>Make sure you submit your image before the end time</li>
@@ -19,8 +21,20 @@
         <li>Once you submit you'll be logged out. To again submit you'll have to login.</li>
         <li>Download the following: </li>
     </ul>
-    <h1>Latest image</h1>
-    <img src="/images/<%=id%>" />
+    <div class="w3-row w3-margin">
+        <div class="w3-col l6 m12 s12 w3-container w3-padding-64">
+            <form action="/image" class="w3-margin" method="POST" enctype="multipart/form-data">
+                <input type="file" name="imageFile" accept="image/*">
+                <input type="text" name="id" value="<%=id%>" class="w3-hide"/>
+                <input type="submit">
+            </form>
+        </div>
+        <div class="w3-col l6 m12 s12 w3-center">
+            <h1>Latest image</h1>
+            <img src="/image/<%=id%>" width="400px" height="300px" />
+        </div>
+    </div>
+
 </body>
 
 </html>

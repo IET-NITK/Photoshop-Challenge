@@ -11,6 +11,7 @@ mongoose.Promise = require('bluebird');
 var index = require('./routes/index');
 var signup = require('./routes/signup');
 var users = require('./routes/user');
+var image = require('./routes/image');
 
 var config = require('./config');
 
@@ -37,11 +38,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'images')));
+app.use(express.static(path.join(__dirname, 'public/images')));
 
 app.use('/', index);
 app.use('/signup', signup);
 app.use('/user', users);
+app.use('/image', image);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -53,6 +55,7 @@ app.use(function(req, res, next) {
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
+  console.log(err)
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
