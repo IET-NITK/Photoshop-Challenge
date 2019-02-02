@@ -4,14 +4,14 @@ var Schema = mongoose.Schema;
 
 var Submission = new Schema({
     name : {
-        type : string
+        type : String
     },
     userid : {
         type : mongoose.Types.ObjectId
     }
 }, {
     timestamps : true,
-    collection : "Submissions"
+    collection : "Submission"
 })
 
 var Users = new Schema({
@@ -28,5 +28,5 @@ var Users = new Schema({
 
 module.exports = {
     users : mongoose.model('Users', Users),
-    submission : mongoose.model('Submissions', Submissions)
+    submission : mongoose.model('Submission', Submission)
 }

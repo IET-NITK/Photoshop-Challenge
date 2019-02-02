@@ -17,7 +17,7 @@ var mailOptions = (username, password) =>{
         html:`
         <div style="width:100%;max-width:800px;position:absolute;">
             <div style="margin:auto;position:relative;">
-                <h1>Hello ${username}</h1>
+                <h5>Hello ${username}</5>
                 <p>
                     Greetings from IET NITK. You are successfully registered for Photoshop competition.
                     Your password is
