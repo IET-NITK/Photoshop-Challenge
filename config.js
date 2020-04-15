@@ -1,7 +1,8 @@
 var db = {
     username : "iet",
     password : "ietnitk2018",
-    uri :   "mongodb://iet:ietnitk2018@ds119445.mlab.com:19445/photoshop"
+	uri : "mongodb://iet:ietnitk2018@ds227185.mlab.com:27185/photoshop2020"  
+	//"mongodb://iet:ietnitk2018@ds119445.mlab.com:19445/photoshop"
 }
 
 var email = {
