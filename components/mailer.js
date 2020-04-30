@@ -2,21 +2,19 @@ var nodemailer = require('nodemailer');
 var configs = require("../config");
 
 var transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-	secure: false,
+	service: 'gmail',
 	auth: {
-        user: configs.email.username,
-        pass: configs.email.password
-    }
+		user: configs.email.username,
+		pass: configs.email.password
+	}
 });
 
-var mailOptions = (username, password) =>{
-    return {
-        from: configs.email.username,
-        to: username,
-        subject: 'IET Registration',
-        html:`
+var mailOptions = (username, password) => {
+	return {
+		from: configs.email.username,
+		to: username,
+		subject: 'IET Registration',
+		html: `
         <div style="width:100%;max-width:800px;position:absolute;">
             <div style="margin:auto;position:relative;">
                 <h5>Hello ${username}</5>
@@ -30,7 +28,7 @@ var mailOptions = (username, password) =>{
             </div>
         </div>           
         `
-    }
+	}
 };
 
 exports.opts = mailOptions
